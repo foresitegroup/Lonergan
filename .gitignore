@@ -41,3 +41,13 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+admin/login.php
+audio/
+backup/
+inc/dbconfig.php
+pdfs/
+pear_admin/
+phplist-2.10.5/
+video/
+login.php
