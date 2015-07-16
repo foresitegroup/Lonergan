@@ -34,7 +34,7 @@ $salt = "BernardLonerganArchive";
             //-->
           </script>
           
-          Starred fields are required.  Your user name and password will be sent to the submitted e-mail address; please make sure it is valid and correct.<br>
+          Starred fields are required.  Your user name and password will be sent to the submitted e-mail address; please make sure it is valid and correct. If you don't see this e-mail, check your spam folder.<br>
           <br>
           
           <form method="post" action="registersend.php" onsubmit="return checkform(this)">

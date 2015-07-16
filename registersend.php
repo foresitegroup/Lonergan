@@ -37,7 +37,7 @@ if ($_POST['confirmationCAP'] == "") {
   if ($duplicate_username == 0 ) {
     $newrec = "INSERT INTO users (firstname,lastname,institute,addr1,addr2,city,state,zip,country,phone,email,password,getemail,regdate) VALUES('$firstname','$lastname','$institute','$addr1','$addr2','$city','$state','$zip','$country','$phone','$email','$newpass', '$getemail', '$regdate')";
     $PageTitle = "Registration Submitted";
-    $FinalText = "Your information has been successfully submitted.  You will receive an e-mail shortly with your username and password.";
+    $FinalText = "Your information has been successfully submitted.  You will receive an e-mail shortly with your username and password. If you don't see this e-mail, check your spam folder.";
     // Send it
     mail($SendTo, $subject, $message, $from);
     //mail("m.lippert@remedicreative.com", "New Lonergan Archive Resistration", $firstname . " " $lastname, $from);
