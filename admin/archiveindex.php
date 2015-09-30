@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("login.php");
 include("../inc/dbconfig.php");
 ?>
@@ -44,101 +45,124 @@ include("../inc/dbconfig.php");
 <? include("menu.php"); ?>
 
 <div style="clear: both; height: 15px;"></div>
-  <div id="main-left-content" style="width: 900px; margin: 0 auto;">
-    <div style="margin-left: 12px;">
-      <div style="text-align: center;">
-        <a href="archiveexport.php">Export archive to Excel</a>
-      </div>
-      
-      <form action="archiveadd.php" method="POST">
-      <table style="width: 450px; float: left;">
+
+<div id="main-left-content" style="width: 900px; margin: 0 auto;">
+  <div style="float: left; width: 400px;">
+    <h3>Upload A PDF</h3>
+    <form action="archiveupload.php" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <input type="submit" name="usubmit" value="Upload">
+    </form><br>
+
+    <?php
+    echo $_SESSION['POST'];
+    unset($_SESSION['POST']);
+    ?>
+    <br>
+
+    <hr>
+    <br>
+
+    <h3>Add A New Archive Item</h3>
+    <form action="archiveadd.php" method="POST">
+      <table style="width: 100%;" cellspacing="0" cellpadding="4" border="0">
         <tr>
-          <td colspan="2"><h3>Add A New Archive Item</h3></td>
+          <td colspan="2">
+            Do not display publically
+            <input type="checkbox" name="display" value="no" style="vertical-align: middle;">
+          </td>
         </tr>
         <tr>
-          <td valign="top" nowrap>Call Number/SKU:</td>
-          <td><input type="text" name="sku" size="50" /></td>
+          <td style="width: 115px; text-align: right;">Call Number/SKU:</td>
+          <td><input type="text" name="sku" style="width: 100%;"></td>
         </tr>
         <tr>
-          <td valign="top" nowrap>Archival Number:</td>
-          <td><input type="text" name="archivalnum" size="50" /></td>
+          <td style="width: 115px; text-align: right;">Archival Number:</td>
+          <td><input type="text" name="archivalnum" style="width: 100%;"></td>
         </tr>
         <tr>
-          <td valign="top">Title:</td>
-          <td><input type="text" name="title" size="50" /></td>
+          <td style="width: 115px; text-align: right;">Title:</td>
+          <td><input type="text" name="title" style="width: 100%;"></td>
         </tr>
         <tr>
-          <td valign="top">Author:</td>
-          <td><input type="text" name="author" size="50" /></td>
+          <td style="width: 115px; text-align: right;">Author:</td>
+          <td><input type="text" name="author" style="width: 100%;"></td>
         </tr>
         <tr>
-          <td valign="top">Language:</td>
-          <td><input type="text" name="language1" size="50" /></td>
+          <td style="width: 115px; text-align: right;">Language:</td>
+          <td><input type="text" name="language1" style="width: 100%;"></td>
         </tr>
         <tr>
-          <td valign="top">Language 2:</td>
-          <td><input type="text" name="language2" size="50" /></td>
+          <td style="width: 115px; text-align: right;">Language 2:</td>
+          <td><input type="text" name="language2" style="width: 100%;"></td>
         </tr>
         <tr>
-          <td valign="top">Decade:</td>
-          <td><input type="text" name="decade" size="50" /></td>
+          <td style="width: 115px; text-align: right;">Decade:</td>
+          <td><input type="text" name="decade" style="width: 100%;"></td>
         </tr>
         <tr>
-          <td valign="top">PDF:</td>
-          <td><input type="text" name="pdf" size="50" /></td>
+          <td style="width: 115px; text-align: right;">PDF:</td>
+          <td><input type="text" name="pdf" style="width: 100%;"></td>
         </tr>
         <tr>
-          <td valign="top">Audio:</td>
-          <td><input type="text" name="audio" size="50" /></td>
+          <td style="width: 115px; text-align: right;">Audio:</td>
+          <td><input type="text" name="audio" style="width: 100%;"></td>
         </tr>
         <tr>
-          <td valign="top">Video:</td>
-          <td><input type="text" name="video" size="50" /></td>
+          <td style="width: 115px; text-align: right;">Video:</td>
+          <td><input type="text" name="video" style="width: 100%;"></td>
         </tr>
         <tr>
-          <td valign="top">Description:</td>
-          <td><textarea rows="10" cols="37" name="description"></textarea></td>
+          <td style="width: 115px; text-align: right;" valign="top">Description:</td>
+          <td><textarea name="description" style="width: 100%; height: 10em;"></textarea></td>
         </tr>
         <tr>
-          <td valign="top">Transcription:</td>
-          <td><textarea rows="15" cols="37" name="transcription"></textarea></td>
+          <td style="width: 115px; text-align: right;" valign="top">Transcription:</td>
+          <td><textarea name="transcription" style="width: 100%; height: 10em;"></textarea></td>
         </tr>
         <tr>
           <td colspan="2" align="center"><input type="submit" value="Add" /></td>
         </tr>
       </table>
-      </form>
-      
-      <h3>Available Archive Items</h3>
-      
-      <div style="font-size: 80%;">
-        <table>
-        <?php
-        $query = "SELECT * FROM archive ORDER BY sku ASC";
-        
-        $result = mysql_query($query);
-
-        if($result) {
-          while($row = mysql_fetch_array($result)) {
-            if (!empty($row['archivalnum'])) {
-              $thenumber = $row['sku'] . " / " . $row['archivalnum'];
-            } else {
-              $thenumber = $row['sku'];
-            }
-            
-            echo "<tr><td valign=\"top\" nowrap><a href=\"archivedelete.php?id=" . $row['id'] . "\">delete</a> | <a href=\"archiveedit.php?id=" . $row['id'] . "\">edit</a> ::</td><td><a href=\"javascript:pop('archiveview.php?id=" . $row['id'] . "')\">" . $thenumber . " - " . $row['title'] . "</a></td></tr>\n";
-          }
-        }
-        ?>
-        </table>
-      </div>
-      
-      <div style="clear: both;"></div>
-      
-      <br><br>
+    </form>
+  </div>
   
+  <div style="float: right; width: 450px;">
+    <a href="archiveexport.php">Export archive to Excel</a><br>
+    <br>
+
+    <h3>Available Archive Items</h3>
+    
+    <div style="font-size: 80%;">
+      <table>
+      <?php
+      $query = "SELECT * FROM archive ORDER BY sku ASC";
+      
+      $result = mysql_query($query);
+
+      if($result) {
+        while($row = mysql_fetch_array($result)) {
+          if (!empty($row['archivalnum'])) {
+            $thenumber = $row['sku'] . " / " . $row['archivalnum'];
+          } else {
+            $thenumber = $row['sku'];
+          }
+          
+          echo "<tr><td valign=\"top\" nowrap><a href=\"archivedelete.php?id=" . $row['id'] . "\">delete</a> | <a href=\"archiveedit.php?id=" . $row['id'] . "\">edit</a> ::</td><td><a href=\"javascript:pop('archiveview.php?id=" . $row['id'] . "')\">" . $thenumber . " - " . $row['title'] . "</a>";
+
+          if (!empty($row['display'])) echo "<br><em>[Not displayed publically]</em>";
+
+          echo "</td></tr>\n";
+        }
+      }
+      ?>
+      </table>
     </div>
   </div>
+  
+  <div style="clear: both;"></div>
+  
+  <br><br>
 </div>
 
 <br><br>

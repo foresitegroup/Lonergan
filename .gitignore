@@ -46,7 +46,7 @@ admin/login.php
 audio/
 backup/
 inc/dbconfig.php
-pdfs/
+pdf/
 pear_admin/
 phplist-2.10.5/
 video/

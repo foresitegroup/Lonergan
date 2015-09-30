@@ -15,7 +15,7 @@ $archivalnum = $_POST['archivalnum'];
 $transcription = $_POST['transcription'];
 $id = $_POST['id'];
 
-$query = "UPDATE archive SET sku = '$sku', title = '$title', author = '$author', language1 = '$language1', language2 = '$language2', decade = '$decade', pdf = '$pdf', audio = '$audio', video = '$video', description = '$description', archivalnum = '$archivalnum', transcription = '$transcription' WHERE id = '$id'";
+$query = "UPDATE archive SET sku = '$sku', title = '$title', author = '$author', language1 = '$language1', language2 = '$language2', decade = '$decade', pdf = '$pdf', audio = '$audio', video = '$video', description = '$description', archivalnum = '$archivalnum', transcription = '$transcription', display = '" . $_POST['display'] . "' WHERE id = '$id'";
 
 mysql_query($query);
 

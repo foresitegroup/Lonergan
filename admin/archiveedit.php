@@ -33,81 +33,81 @@ include("../inc/dbconfig.php");
 <? include("menu.php"); ?>
 
 <div style="clear: both; height: 15px;"></div>
-  <div id="main-left-content" style="width: 900px; margin: 0 auto;">
-    <div style="margin-left: 12px;">
+<div id="main-left-content" style="width: 900px; margin: 0 auto;">
+  <?php
+    $id = $_GET['id'];
     
-      <?php
-        $id = $_GET['id'];
-        
-        $query = "SELECT * FROM archive WHERE id = '$id'";
-        
-        $result = mysql_query($query);
-        $row = mysql_fetch_array($result)
-      ?>
+    $query = "SELECT * FROM archive WHERE id = '$id'";
+    
+    $result = mysql_query($query);
+    $row = mysql_fetch_array($result)
+  ?>
   
-      <form action="archiveupdate.php" method="POST">
-      <table style="width: 450px; float: left;">
-        <tr>
-          <td colspan="2"><h3>Edit <?php echo $row['sku'] ?></h3></td>
-        </tr>
-        <tr>
-          <td valign="top" nowrap>Call Number/SKU:</td>
-          <td><input type="text" name="sku" size="50" value="<?php echo $row['sku'] ?>" /></td>
-        </tr>
-        <tr>
-          <td valign="top" nowrap>Archival Number:</td>
-          <td><input type="text" name="archivalnum" size="50" value="<?php echo $row['archivalnum'] ?>" /></td>
-        </tr>
-        <tr>
-          <td valign="top">Title:</td>
-          <td><input type="text" name="title" size="50" value="<?php echo $row['title'] ?>" /></td>
-        </tr>
-        <tr>
-          <td valign="top">Author:</td>
-          <td><input type="text" name="author" size="50" value="<?php echo $row['author'] ?>" /></td>
-        </tr>
-        <tr>
-          <td valign="top">Language:</td>
-          <td><input type="text" name="language1" size="50" value="<?php echo $row['language1'] ?>" /></td>
-        </tr>
-        <tr>
-          <td valign="top">Language 2:</td>
-          <td><input type="text" name="language2" size="50" value="<?php echo $row['language2'] ?>" /></td>
-        </tr>
-        <tr>
-          <td valign="top">Decade:</td>
-          <td><input type="text" name="decade" size="50" value="<?php echo $row['decade'] ?>" /></td>
-        </tr>
-        <tr>
-          <td valign="top">PDF:</td>
-          <td><input type="text" name="pdf" size="50" value="<?php echo $row['pdf'] ?>" /></td>
-        </tr>
-        <tr>
-          <td valign="top">Audio:</td>
-          <td><input type="text" name="audio" size="50" value="<?php echo $row['audio'] ?>" /></td>
-        </tr>
-        <tr>
-          <td valign="top">Video:</td>
-          <td><input type="text" name="video" size="50" value="<?php echo $row['video'] ?>" /></td>
-        </tr>
-        <tr>
-          <td valign="top">Description:</td>
-          <td><textarea rows="10" cols="37" name="description"><?php echo $row['description'] ?></textarea></td>
-        </tr>
-        <tr>
-          <td valign="top">Transcription:</td>
-          <td><textarea rows="15" cols="37" name="transcription"><?php echo $row['transcription'] ?></textarea></td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center"><input type="hidden" name="id" value="<?php echo $id ?>" /><input type="submit" value="Update" /></td>
-        </tr>
-      </table>
-      </form>
-      
-      <div style="clear: both;"></div>
-  
-    </div>
-  </div>
+  <h3>Edit <?php echo $row['sku'] ?></h3>
+
+  <form action="archiveupdate.php" method="POST">
+    <table style="width: 450px;">
+      <tr>
+        <td colspan="2">
+          Do not display publically
+          <input type="checkbox" name="display" value="no" style="vertical-align: middle;"<?php if($row['display'] != "") echo " checked"; ?>>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;">Call Number/SKU:</td>
+        <td><input type="text" name="sku" value="<?php echo $row['sku'] ?>" style="width: 100%;"></td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;">Archival Number:</td>
+        <td><input type="text" name="archivalnum" value="<?php echo $row['archivalnum'] ?>" style="width: 100%;"></td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;">Title:</td>
+        <td><input type="text" name="title" value="<?php echo $row['title'] ?>" style="width: 100%;"></td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;">Author:</td>
+        <td><input type="text" name="author" value="<?php echo $row['author'] ?>" style="width: 100%;"></td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;">Language:</td>
+        <td><input type="text" name="language1" value="<?php echo $row['language1'] ?>" style="width: 100%;"></td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;">Language 2:</td>
+        <td><input type="text" name="language2" value="<?php echo $row['language2'] ?>" style="width: 100%;"></td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;">Decade:</td>
+        <td><input type="text" name="decade" value="<?php echo $row['decade'] ?>" style="width: 100%;"></td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;">PDF:</td>
+        <td><input type="text" name="pdf" value="<?php echo $row['pdf'] ?>" style="width: 100%;"></td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;">Audio:</td>
+        <td><input type="text" name="audio" value="<?php echo $row['audio'] ?>" style="width: 100%;"></td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;">Video:</td>
+        <td><input type="text" name="video" value="<?php echo $row['video'] ?>" style="width: 100%;"></td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;" valign="top">Description:</td>
+        <td><textarea name="description" style="width: 100%; height: 10em;"><?php echo $row['description'] ?></textarea></td>
+      </tr>
+      <tr>
+        <td style="width: 115px; text-align: right;" valign="top">Transcription:</td>
+        <td><textarea name="transcription" style="width: 100%; height: 10em;"><?php echo $row['transcription'] ?></textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center"><input type="hidden" name="id" value="<?php echo $id ?>" /><input type="submit" value="Update" /></td>
+      </tr>
+    </table>
+  </form>
+
+  <br><br>
 </div>
 
 <br><br>

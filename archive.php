@@ -89,7 +89,7 @@ include("inc/dbconfig.php");
       }
       
       if ($iswhere == "yes") {
-        $where = "WHERE $wherestatement";
+        $where = "WHERE display = \"\" AND $wherestatement";
       } else {
         $where = "";
       }
@@ -194,7 +194,7 @@ include("inc/dbconfig.php");
         
         // If filtering show all results else break it up in multiple pages
         if ($iswhere == "no") {
-          $query = "SELECT * FROM archive ORDER BY sku ASC LIMIT $offset, $rowsPerPage";
+          $query = "SELECT * FROM archive WHERE display = \"\" ORDER BY sku ASC LIMIT $offset, $rowsPerPage";
         } else {
           $query = "SELECT * FROM archive $where ORDER BY sku ASC";
         }

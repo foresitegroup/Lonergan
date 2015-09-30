@@ -14,7 +14,7 @@ $description = $_POST['description'];
 $archivalnum = $_POST['archivalnum'];
 $transcription = $_POST['transcription'];
 
-$newrec = "INSERT INTO archive (sku,title,author,language1,language2,decade,pdf,audio,video,description,archivalnum,transcription) VALUES('$sku','$title','$author','$language1','$language2','$decade','$pdf','$audio','$video','$description','$archivalnum','$transcription')";
+$newrec = "INSERT INTO archive (sku,title,author,language1,language2,decade,pdf,audio,video,description,archivalnum,transcription,display) VALUES('$sku','$title','$author','$language1','$language2','$decade','$pdf','$audio','$video','$description','$archivalnum','$transcription','" . $_POST['display'] . "')";
 
 mysql_query($newrec);
 
