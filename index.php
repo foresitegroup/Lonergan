@@ -19,7 +19,7 @@ include("header.php");
           He is the author of <em>Insight: A Study of Human Understanding</em> (1957) and <em>Method in Theology</em> (1972).  In <em>Insight</em> he worked out what he called a Generalized Empirical Method, and in <em>Method in Theology</em> he showed how this method elucidated the structure and process of work in theology.<br>
           <br>
           
-          <strong>Frederick Crowe began collecting what would become Lonergan's archival materials in 1953 and continued for many years. <a href="http://www.lonerganresource.com/frederick-crowe.php" target="new">More about Frederick Crowe</a></strong><br>
+          Frederick Crowe began collecting what would become Lonergan's archival materials in 1953 and continued for many years. <a href="http://www.lonerganresource.com/frederick-crowe.php" target="new">More about Frederick Crowe</a><br>
           <br>
           
           <!--
@@ -28,7 +28,7 @@ include("header.php");
           <br>
           -->
           
-          <a href="pdf/Fund_Letter_2011.pdf">2011 Report from the Marquette Lonergan Project</a> <img src="images/pdf.gif" alt="PDF" height="15">
+          <a href="pdf/2017_Letter_from_Robert_M._Doran.pdf" style="font-weight: bold; font-size: 125%;">2017 Letter from Robert M. Doran</a> <img src="images/pdf.gif" alt="PDF" height="15">
         </div>
       </div> <!-- END main-left-content -->
     </div> <!-- END main-left -->

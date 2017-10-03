@@ -29,6 +29,7 @@ $salt = "BernardLonerganArchive";
               if (document.getElementById('country').value == "") { alert('Country required.'); document.getElementById('country').focus(); return false; }
               if (document.getElementById('phone').value == "") { alert('Phone Number required.'); document.getElementById('phone').focus(); return false; }
               if (document.getElementById('email').value == "") { alert('Email required.'); document.getElementById('email').focus(); return false; }
+              if (document.getElementById('password').value == "") { alert('Password required.'); document.getElementById('password').focus(); return false; }
               return true ;
             }
             //-->
@@ -82,6 +83,10 @@ $salt = "BernardLonerganArchive";
               <tr>
                 <td id="left">Email *:</td>
                 <td><input type="text" name="<?php echo md5("email" . $ip . $salt . $timestamp); ?>" id="email" size="30" /></td>
+              </tr>
+              <tr>
+                <td id="left">Create a password *:</td>
+                <td><input type="text" name="<?php echo md5("password" . $ip . $salt . $timestamp); ?>" id="password" size="30" /></td>
               </tr>
               <tr>
                 <td colspan="2">

@@ -24,9 +24,9 @@ include("header.php");
       In the course of his long and illustrious academic career, he received 19 honorary doctorates and a number of other honors, including being invested as Companion of the Order of Canada in 1971 and being named Corresponding Fellow of the British Academy in 1975.  He was named by Pope Paul VI one of the original members of the International Theological Commission.<br>
       <br>
       <strong>Bernard Lonergan: Published</strong><br>
-      He is the author of <em>Insight: A Study of Human Understanding</em> (1957) and <em>Method in Theology</em> (1972).  In <em>Insight</em> he worked out what he called a Generalized Empirical Method, and in <em>Method in Theology</em> he showed how this method elucidated the structure and process of work in theology.<br>
+      He is the author of <em>Insight: A Study of Human Understanding</em> (1957) and <em>Method in Theology</em> (1972). In Insight he worked out what he called a Generalized Empirical Method, and in <em>Method in Theology</em> he showed how this method elucidated the structure and process of work in theology.<br>
       <br>
-      While these are the two best known of his works, his literary output extends far beyond these works.  University of Toronto Press is currently in the process of publishing the Collected Works of Bernard Lonergan, under the General Editorship of Robert M. Doran of Marquette University and Frederick E. Crowe and with the collaboration of Robert C. Croken, Michael G. Shields, and H. Daniel Monsour of the Lonergan Research Institute, Toronto.  The generous contribution of the Malliner Charitable Foundation has made possible the production of the entire series.  The series will consist of twenty-five volumes.  Of these, 19 have been published to date, and work is going forward on two more at the present time.  The published volumes, all of which will also be made available in digital form in the near future, are:<br>
+      While these are the two best known of his works, his literary output extends far beyond these works. University of Toronto Press is currently in the process of publishing the Collected Works of Bernard Lonergan, under the General Editorship of Robert M. Doran of Marquette University. The generous contribution of the Malliner Charitable Foundation has made possible the production of the entire series. The series will consist of twenty-five volumes. Of these, 23 have been published to date, and work is going forward on the two final volumes at the present time. The published volumes, all of which will also be made available in digital form in the near future, are:<br>
       <table cellpadding="0" cellspacing="1" style="margin-left: 1em;">
         <tr>
           <td style="vertical-align: top; text-align: right;">1.</td>
@@ -57,6 +57,10 @@ include("header.php");
           <td style="padding-left: 0.7em;"><em>The Ontological and Psychological Constitution of Christ</em>, trans. Michael G. Shields, ed. Frederick E. Crowe and Robert M. Doran (2002)</td>
         </tr>
         <tr>
+          <td style="vertical-align: top; text-align: right;">8.</td>
+          <td style="padding-left: 0.7em;"><em>The Incarnate Word</em>em>, trans. Charles C. Hefling, Jr., ed. Robert M. Doran and Jeremy D. Wilkins (2016)</td>
+        </tr>
+        <tr>
           <td style="vertical-align: top;">10.</td>
           <td style="padding-left: 0.7em;"><em>Topics in Education</em>, ed. Robert M. Doran and Frederick E. Crowe (1993)</td>
         </tr>
@@ -69,8 +73,20 @@ include("header.php");
           <td style="padding-left: 0.7em;"><em>The Triune God: Systematics</em>, trans. Michael G. Shields, ed. Robert M. Doran and H. Daniel Monsour (2007)</td>
         </tr>
         <tr>
+          <td style="vertical-align: top;">13.</td>
+          <td style="padding-left: 0.7em;"><em>A Second Collection</em>, ed. Robert M. Doran and John D. Dadosky (2016)</td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">14.</td>
+          <td style="padding-left: 0.7em;"><em>Method in Theology</em>, ed. Robert M. Doran and John D. Dadosky (2017)</td>
+        </tr>
+        <tr>
           <td style="vertical-align: top;">15.</td>
           <td style="padding-left: 0.7em;"><em>Macroeconomic Dynamics: An Essay in Circulation Analysis</em>, ed. Frederick G. Lawrence, Patrick H. Byrne, and Charles C. Heftrng, Jr. (1999)</td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">16.</td>
+          <td style="padding-left: 0.7em;"><em>A Third Collection</em>, ed. Robert M. Doran and John D. Dadosky (2017)</td>
         </tr>
         <tr>
           <td style="vertical-align: top;">17.</td>
@@ -111,28 +127,12 @@ include("header.php");
       <img src="images/bio5.jpg" alt="" style="float: right; padding: 0px 0px 0px 6px;">
       <table cellpadding="0" cellspacing="1" style="margin-left: 1em;">
         <tr>
-          <td style="vertical-align: top; text-align: right;">8.</td>
-          <td style="padding-left: 0.7em;"><em>The Incarnate Word</em></td>
-        </tr>
-        <tr>
           <td style="vertical-align: top; text-align: right;">9.</td>
-          <td style="padding-left: 0.7em;"><em>The Redemption</em></td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;">13.</td>
-          <td style="padding-left: 0.7em;"><em>A Second Collection</em></td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;">14.</td>
-          <td style="padding-left: 0.7em;"><em>Method in Theology</em></td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;">16.</td>
-          <td style="padding-left: 0.7em;"><em>A Third Collection</em></td>
+          <td style="padding-left: 0.7em;"><em>The Redemption</em>, trans. Michael G. Shields, ed. Robert M. Doran, H. Daniel Monsour, and Jeremy D. Wilkins</td>
         </tr>
         <tr>
           <td style="vertical-align: top;">25.</td>
-          <td style="padding-left: 0.7em;"><em>Archival Material</em></td>
+          <td style="padding-left: 0.7em;"><em>Archival Material</em>, ed. Robert M. Doran and John D. Dadosky</td>
         </tr>
       </table>
       <br>

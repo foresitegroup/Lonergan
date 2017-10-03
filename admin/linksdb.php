@@ -8,7 +8,7 @@ switch ($_GET['a']) {
     $row = mysql_fetch_array($result);
     $sort = $row[0] + 1;
     
-    mysql_query("INSERT INTO links (title,link,description,sort) VALUES('" . $_POST['title'] . "','" . $_POST['link'] . "','" . $_POST['description'] . "','$sort')");
+    mysql_query("INSERT INTO links (title,link,description,sort) VALUES('" . mysql_real_escape_string($_POST['title']) . "','" . mysql_real_escape_string($_POST['link']) . "','" . mysql_real_escape_string($_POST['description']) . "','$sort')");
     
     break;
   
@@ -23,7 +23,7 @@ switch ($_GET['a']) {
     break;
   
   case "edit":
-    mysql_query("UPDATE links SET title = '" . $_POST['title'] . "', link = '" . $_POST['link'] . "', description = '" . $_POST['description'] . "' WHERE id = '" . $_POST['id'] . "'");
+    mysql_query("UPDATE links SET title = '" . mysql_real_escape_string($_POST['title']) . "', link = '" . mysql_real_escape_string($_POST['link']) . "', description = '" . mysql_real_escape_string($_POST['description']) . "' WHERE id = '" . $_POST['id'] . "'");
     
     break;
   

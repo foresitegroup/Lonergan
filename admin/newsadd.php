@@ -1,8 +1,8 @@
 <?php
 include("../inc/dbconfig.php");
 
-$title = $_POST['title'];
-$text = $_POST['text'];
+$title = mysql_real_escape_string($_POST['title']);
+$text = mysql_real_escape_string($_POST['text']);
 
 $newrec = "INSERT INTO news (title,text) VALUES('$title','$text')";
 
