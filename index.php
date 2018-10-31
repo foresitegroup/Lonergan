@@ -11,7 +11,7 @@ include("header.php");
         <img src="images/Welcome.jpg" alt="Welcome to the Archive"><br>
         <br>
         
-        <div style="margin-left: 12px;">
+        <div style="margin: 0 0 15px 12px;">
           With the support of Marquette University the Bernard Lonergan Archive is a digital repository of primary materials related to the work of Jesuit philosopher/theologian Bernard Lonergan: archival papers and audio recordings of lectures.<br>
           <br>
           Fr. Bernard Lonergan, S.J. was a Canadian Jesuit Priest born in Buckingham, Quebec. He was a philosopher-theologian, an economist, and a student of methodology. He taught at Loyola College (Montreal) (now part of Concordia University), Regis College (Toronto), the Pontifical Gregorian University in Rome, Harvard University, and Boston College.<br>
@@ -28,7 +28,8 @@ include("header.php");
           <br>
           -->
           
-          <a href="pdf/2018_Letter_from_Robert_M._Doran.pdf" style="font-weight: bold; font-size: 125%;">2018 Letter from Robert M. Doran</a> <img src="images/pdf.gif" alt="PDF" height="15">
+          <a href="pdf/2018_Letter_from_Robert_M._Doran.pdf" style="font-weight: bold; font-size: 125%;">2018 Letter from Robert M. Doran</a> <img src="images/pdf.gif" alt="PDF" height="15"><br>
+          <a href="pdf/International_Institute_for_Method_in_Theology_Newsletter_1.pdf" style="font-weight: bold; font-size: 125%;">International Institute for Method in Theology, Newsletter 1</a> <img src="images/pdf.gif" alt="PDF" height="15">
         </div>
       </div> <!-- END main-left-content -->
     </div> <!-- END main-left -->
