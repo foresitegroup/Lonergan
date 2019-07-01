@@ -42,7 +42,7 @@ include("../inc/dbconfig.php");
 </head>
 <body>
 
-<? include("menu.php"); ?>
+<?php include("menu.php"); ?>
 
 <div style="clear: both; height: 15px;"></div>
 
@@ -55,8 +55,10 @@ include("../inc/dbconfig.php");
     </form><br>
 
     <?php
-    echo $_SESSION['POST'];
-    unset($_SESSION['POST']);
+    if (isset($_SESSION['POST'])) {
+      echo $_SESSION['POST'];
+      unset($_SESSION['POST']);
+    }
     ?>
     <br>
 
@@ -136,12 +138,10 @@ include("../inc/dbconfig.php");
     <div style="font-size: 80%;">
       <table>
       <?php
-      $query = "SELECT * FROM archive ORDER BY sku ASC";
-      
-      $result = mysql_query($query);
+      $result = $mysqli->query("SELECT * FROM archive ORDER BY sku ASC");
 
       if($result) {
-        while($row = mysql_fetch_array($result)) {
+        while($row = $result->fetch_array(MYSQLI_ASSOC)) {
           if (!empty($row['archivalnum'])) {
             $thenumber = $row['sku'] . " / " . $row['archivalnum'];
           } else {

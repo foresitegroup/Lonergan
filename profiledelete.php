@@ -3,13 +3,9 @@ include("inc/dbconfig.php");
 
 setcookie("BLarchive", "", time() - 3600, "/"); // delete cookie;
 
-$id = $_GET['id'];
+$mysqli->query("DELETE FROM users WHERE id = '".$_GET['id']."'");
 
-$query = "DELETE FROM users WHERE id = '$id'";
-
-mysql_query($query);
-
-mysql_close();
+mysqli_close();
 
 $PageTitle = "Profile Deleted";
 include("header.php");
@@ -32,8 +28,8 @@ include("header.php");
       </div> <!-- END main-left-content -->
     </div> <!-- END main-left -->
     
-    <? include("sidebar.php"); ?>
+    <?php include("sidebar.php"); ?>
     
   </div> <!-- END twocol-wrap -->
   
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

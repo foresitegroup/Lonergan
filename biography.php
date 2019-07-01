@@ -1,4 +1,4 @@
-<?
+<?php
 $PageTitle = "Biography";
 include("header.php");
 ?>
@@ -162,4 +162,4 @@ include("header.php");
     </div>
   </div> <!-- END main-left-content -->
 
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

@@ -1,12 +1,11 @@
 <?php
 include("../inc/dbconfig.php");
 
-$query = "SELECT sku,title,author,description,decade,language1,language2,pdf,audio,video,transcription FROM archive ORDER BY sku ASC";
-$result = mysql_query($query);
+$result = $mysqli->query("SELECT sku,title,author,description,decade,language1,language2,pdf,audio,video,transcription FROM archive ORDER BY sku ASC");
 
 $csv_output .= "Call Number\tTitle\tAuthor\tDescription\tDecade\tLanguage\tLanguage 2\tPDF\tAudio\tVideo\tTranscription\t";
 
-while($row = mysql_fetch_row($result)) {
+while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 	$line = '';
 	foreach($row as $value) {
 		if ((!isset($value)) OR ($value == "")) {

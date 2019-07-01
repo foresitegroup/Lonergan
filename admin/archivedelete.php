@@ -1,13 +1,9 @@
 <?php
 include("../inc/dbconfig.php");
 
-$id = $_GET['id'];
+$mysqli->query("DELETE FROM archive WHERE id = '".$_GET['id']."'");
 
-$query = "DELETE FROM archive WHERE id = '$id'";
+mysqli_close();
 
-mysql_query($query);
-
-mysql_close();
-
-header( "Location: archiveindex.php" );
+header("Location: archiveindex.php");
 ?>

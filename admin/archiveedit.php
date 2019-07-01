@@ -30,17 +30,13 @@ include("../inc/dbconfig.php");
 </head>
 <body>
 
-<? include("menu.php"); ?>
+<?php include("menu.php"); ?>
 
 <div style="clear: both; height: 15px;"></div>
 <div id="main-left-content" style="width: 900px; margin: 0 auto;">
   <?php
-    $id = $_GET['id'];
-    
-    $query = "SELECT * FROM archive WHERE id = '$id'";
-    
-    $result = mysql_query($query);
-    $row = mysql_fetch_array($result)
+  $result = $mysqli->query("SELECT * FROM archive WHERE id = '".$_GET['id']."'");
+  $row = $result->fetch_array(MYSQLI_ASSOC);
   ?>
   
   <h3>Edit <?php echo $row['sku'] ?></h3>
@@ -102,7 +98,7 @@ include("../inc/dbconfig.php");
         <td><textarea name="transcription" style="width: 100%; height: 10em;"><?php echo $row['transcription'] ?></textarea></td>
       </tr>
       <tr>
-        <td colspan="2" align="center"><input type="hidden" name="id" value="<?php echo $id ?>" /><input type="submit" value="Update" /></td>
+        <td colspan="2" align="center"><input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" /><input type="submit" value="Update" /></td>
       </tr>
     </table>
   </form>

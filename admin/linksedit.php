@@ -2,8 +2,8 @@
 include("login.php");
 include("../inc/dbconfig.php");
 
-$result = mysql_query("SELECT * FROM links WHERE id = '" . $_GET['id'] . "'");
-$row = mysql_fetch_array($result);
+$result = $mysqli->query("SELECT * FROM links WHERE id = '" . $_GET['id'] . "'");
+$row = $result->fetch_array(MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -44,7 +44,7 @@ $row = mysql_fetch_array($result);
 </head>
 <body>
 
-<? include("menu.php"); ?>
+<?php include("menu.php"); ?>
 
 <div style="clear: both; height: 15px;"></div>
   <div id="main-left-content" style="width: 900px; margin: 0 auto;">

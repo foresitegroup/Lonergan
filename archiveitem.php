@@ -1,11 +1,9 @@
-<?
+<?php
 include("login.php");
 include("inc/dbconfig.php");
 
-$id = $_GET['id'];
-$query = "SELECT * FROM archive WHERE id = '$id'";
-$result = mysql_query($query);
-$row = mysql_fetch_array($result);
+$result = $mysqli->query("SELECT * FROM archive WHERE id = '".$_GET['id']."'");
+$row = $result->fetch_array(MYSQLI_ASSOC);
 
 if (!empty($row['archivalnum'])) {
   $thenumber = $row['sku'] . " / " . $row['archivalnum'];
@@ -69,4 +67,4 @@ include("header.php");
     </div>
   </div> <!-- END main-left-content -->
   
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

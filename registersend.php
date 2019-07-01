@@ -9,22 +9,22 @@ if ($_POST['confirmationCAP'] == "") {
   $from = "From: Bernard Lonergan Archive <info@bernardlonergan.com>\r\n";
 
   // $newpass = substr(md5(rand().rand()), 0, 8);
-  $newpass = mysql_real_escape_string($_POST[md5('password' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $newpass = $mysqli->real_escape_string($_POST[md5('password' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
 
   $message = "Welcome to the Bernard Lonergan Archive.  You may use your email address as your username.  Your password is $newpass.  Please retain this email for your records.\n";
 
   // Set varibles to be inserted in DB
-  $firstname = mysql_real_escape_string($_POST[md5('firstname' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
-  $lastname = mysql_real_escape_string($_POST[md5('lastname' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
-  $institute = mysql_real_escape_string($_POST[md5('institute' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
-  $addr1 = mysql_real_escape_string($_POST[md5('addr1' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
-  $addr2 = mysql_real_escape_string($_POST[md5('addr2' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
-  $city = mysql_real_escape_string($_POST[md5('city' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
-  $state = mysql_real_escape_string($_POST[md5('state' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
-  $zip = mysql_real_escape_string($_POST[md5('zip' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
-  $country = mysql_real_escape_string($_POST[md5('country' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
-  $phone = mysql_real_escape_string($_POST[md5('phone' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
-  $email = mysql_real_escape_string($_POST[md5('email' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $firstname = $mysqli->real_escape_string($_POST[md5('firstname' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $lastname = $mysqli->real_escape_string($_POST[md5('lastname' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $institute = $mysqli->real_escape_string($_POST[md5('institute' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $addr1 = $mysqli->real_escape_string($_POST[md5('addr1' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $addr2 = $mysqli->real_escape_string($_POST[md5('addr2' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $city = $mysqli->real_escape_string($_POST[md5('city' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $state = $mysqli->real_escape_string($_POST[md5('state' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $zip = $mysqli->real_escape_string($_POST[md5('zip' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $country = $mysqli->real_escape_string($_POST[md5('country' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $phone = $mysqli->real_escape_string($_POST[md5('phone' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
+  $email = $mysqli->real_escape_string($_POST[md5('email' . $_POST['ip'] . $salt . $_POST['timestamp'])]);
   if (!empty($_POST['getemail'])) {
     $getemail = "Yes";
   } else {
@@ -32,8 +32,8 @@ if ($_POST['confirmationCAP'] == "") {
   }
   $regdate = date("j F Y g:ia");
   
-  $find_username = mysql_query("SELECT email FROM users WHERE email = '$email'");
-  $duplicate_username = mysql_num_rows($find_username);
+  $find_username = $mysqli->query("SELECT email FROM users WHERE email = '$email'");
+  $duplicate_username = $find_username->num_rows;
 
   if ($duplicate_username == 0 ) {
     $newrec = "INSERT INTO users (firstname,lastname,institute,addr1,addr2,city,state,zip,country,phone,email,password,getemail,regdate) VALUES('$firstname','$lastname','$institute','$addr1','$addr2','$city','$state','$zip','$country','$phone','$email','$newpass', '$getemail', '$regdate')";
@@ -48,8 +48,8 @@ if ($_POST['confirmationCAP'] == "") {
     $FinalText = "The e-mail address submitted already exists in our database.  Please go back and submit a different address or <a href=\"lostpassword.php\">retrieve the password</a> for this address.";
   } 
 
-  mysql_query($newrec);
-  mysql_close();
+  $mysqli->query($newrec);
+  mysqli_close();
 
   // Print results
   //echo "<pre>$SendTo\n$from$subject\n\n$message</pre>";
@@ -77,8 +77,8 @@ include("header.php");
         </div> <!-- END main-left-content -->
       </div> <!-- END main-left -->
       
-      <? include("sidebar.php"); ?>
+      <?php include("sidebar.php"); ?>
       
     </div> <!-- END twocol-wrap -->
   
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

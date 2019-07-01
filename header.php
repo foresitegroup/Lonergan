@@ -6,7 +6,7 @@
   <META name="author" content="Remedi Creative">
   <META name="description" content="Bernard Lonergan Archive offers access to the most important documents in the Lonergan archives, in the form of searchable PDF files, and to audio recordings of lectures that Lonergan delivered between 1957 and 1983, in the form of downloadable mp3 files.">
   <META name="keywords" content="Bernard Lonergan, Insight, Method in Theology, Lonergan, Longergan, Bernhard, theology, philosophy, economics, consciousness, knowledge, systematic theology, cognitional theory, epistemology, metaphysics, functional specialties, method, macroeconomics, interiority, differentiation of consciousness, generalized empirical method, emergent probability, meaning, human good, values, religion, question of God, scientific method, historical method, hermeneutics, logic, Aquinas, Aristotle, Augustine, Newman, existentialism">
-  <title>Bernard Lonergan Archive<? if ($PageTitle != "") { print " - " . $PageTitle; } ?></title>
+  <title>Bernard Lonergan Archive<?php if (isset($PageTitle)) echo " | " . $PageTitle; ?></title>
   <link rel="stylesheet" href="inc/lonergan2008.css" type="text/css" media="screen">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <script type="text/javascript" src="inc/swfobject.js"></script>

@@ -15,19 +15,15 @@ include("../inc/dbconfig.php");
 </head>
 <body>
 
-<? include("menu.php"); ?>
+<?php include("menu.php"); ?>
 
 <div style="clear: both; height: 15px;"></div>
   <div id="main-left-content" style="width: 900px; margin: 0 auto;">
     <div style="margin-left: 12px;">
     
       <?php
-        $id = $_GET['id'];
-        
-        $query = "SELECT * FROM users WHERE id = '$id'";
-        
-        $result = mysql_query($query);
-        $row = mysql_fetch_array($result)
+      $result = $mysqli->query("SELECT * FROM users WHERE id = '".$_GET['id']."'");
+      $row = $result->fetch_array(MYSQLI_ASSOC);
       ?>
   
       <form action="userupdate.php" method="POST">
@@ -96,7 +92,7 @@ include("../inc/dbconfig.php");
           <td><input type="text" name="password" size="30" value="<?php echo $row['password'] ?>" /></td>
         </tr>
         <tr>
-          <td colspan="2" align="center"><input type="hidden" name="id" value="<?php echo $id ?>" /><input type="submit" value="Update" /></td>
+          <td colspan="2" align="center"><input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" /><input type="submit" value="Update" /></td>
         </tr>
       </table>
       </form>

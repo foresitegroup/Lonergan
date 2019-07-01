@@ -1,4 +1,4 @@
-<?
+<?php
 include("login.php");
 include("inc/dbconfig.php");
 
@@ -18,14 +18,13 @@ include("header.php");
     <div style="margin-left: 12px;">
       
       <?php
-      $query = "SELECT * FROM archive WHERE description LIKE '%$search%' OR transcription LIKE '%$search%' OR title LIKE '%$search%' OR sku LIKE '%$search%' ORDER BY sku";
-      $result = mysql_query($query);
-      $numrows = mysql_num_rows($result);
+      $result = $mysqli->query("SELECT * FROM archive WHERE description LIKE '%$search%' OR transcription LIKE '%$search%' OR title LIKE '%$search%' OR sku LIKE '%$search%' ORDER BY sku");
+      $numrows = $result->num_rows;
       
       if ($numrows == 0) {
         echo "Sorry, your search did not return any results.";
       } else {
-        while ($row = mysql_fetch_array($result)) {
+        while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
           if (!empty($row['archivalnum'])) {
             $thenumber = $row['sku'] . " / " . $row['archivalnum'];
           } else {
@@ -46,4 +45,4 @@ include("header.php");
     </div>
   </div> <!-- END main-left-content -->
   
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

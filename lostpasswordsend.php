@@ -5,14 +5,13 @@ $SendTo = $_POST['email'];
 $subject = "Lonergan Archive Password";
 $from = "From: Bernard Lonergan Archive <info@bernardlonergan.com>\r\n";
 
-$find_username = mysql_query("SELECT email FROM users WHERE email = '$SendTo'");
-$count_username = mysql_num_rows($find_username);
+$find_username = $mysqli->query("SELECT email FROM users WHERE email = '$SendTo'");
+$count_username = $find_username->num_rows;
 
 if ($count_username !== 0 ) {
-  $query = "SELECT password FROM users WHERE email = '$SendTo'";
-  $result = mysql_query($query);
+  $result = $mysqli->query("SELECT password FROM users WHERE email = '$SendTo'");
   
-  while($row = mysql_fetch_array($result)) {
+  while($row = $result->fetch_array(MYSQLI_ASSOC)) {
     $password = $row['password'];
   }
   $PageTitle = "Password Sent";
@@ -25,14 +24,14 @@ if ($count_username !== 0 ) {
   $FinalText = "Sorry, but this address does not exist in our database.  Please recheck and try again.  You may also <a href=\"register.php\">re-register</a> if you wish.";
 } 
 
-mysql_query($newrec);
-mysql_close();
+$mysqli->query($newrec);
+mysqli_close();
 
 // Print results
 //echo "<pre>$SendTo\n$from$subject\n\n$message</pre>";
 ?>
 
-<?
+<?php
 include("header.php");
 ?>
 
@@ -52,8 +51,8 @@ include("header.php");
         </div> <!-- END main-left-content -->
       </div> <!-- END main-left -->
       
-      <? include("sidebar.php"); ?>
+      <?php include("sidebar.php"); ?>
       
     </div> <!-- END twocol-wrap -->
   
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

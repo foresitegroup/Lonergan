@@ -1,13 +1,9 @@
 <?php
 include("../inc/dbconfig.php");
 
-$id = $_GET['id'];
+$mysqli->query("DELETE FROM news WHERE id = '".$_GET['id']."'");
 
-$query = "DELETE FROM news WHERE id = '$id'";
+mysqli_close();
 
-mysql_query($query);
-
-mysql_close();
-
-header( "Location: newsindex.php" );
+header("Location: newsindex.php");
 ?>

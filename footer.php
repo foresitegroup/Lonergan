@@ -10,11 +10,10 @@
   <?php
   } else {
     include("inc/dbconfig.php");
-    $query = "SELECT * FROM users";
-    $result = mysql_query($query);
+    $result = $mysqli->query("SELECT * FROM users");
     
     // foreach($LOGIN_INFORMATION as $key=>$val) {
-    while($row = mysql_fetch_array($result)) {
+    while($row = $result->fetch_array(MYSQLI_ASSOC)) {
       $login = $row['email'];
       $password = $row['password'];
       
@@ -34,9 +33,11 @@
   
   <div id="copyright">
     <?php
-    $archivepage = strpos($PageTitle, "Archive Item");
-    if ($archivepage !== false) {
-      echo "Database and descriptions &copy; Copyright 2008-" . date("Y") . " by Robert M. Doran<br>";
+    if (isset($PageTitle)) {
+      $archivepage = strpos($PageTitle, "Archive Item");
+      if ($archivepage !== false) {
+        echo "Database and descriptions &copy; Copyright 2008-" . date("Y") . " by Robert M. Doran<br>";
+      }
     }
     ?>
     &copy; 2008-<?php echo date("Y"); ?> Bernard Lonergan Estate &nbsp; &nbsp; &nbsp; All Rights Reserved<br>

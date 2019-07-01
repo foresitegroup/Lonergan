@@ -15,7 +15,7 @@ include("../inc/dbconfig.php");
 </head>
 <body>
 
-<? include("menu.php"); ?>
+<?php include("menu.php"); ?>
 
 <div style="clear: both; height: 15px;"></div>
   <div id="main-left-content" style="width: 900px; margin: 0 auto;">
@@ -25,12 +25,10 @@ include("../inc/dbconfig.php");
       
       <div style="font-size: 80%;">
         <?php
-        $query = "SELECT * FROM users WHERE getemail = 'Yes' ORDER BY email ASC";
-        
-        $result = mysql_query($query);
+        $result = $mysqli->query("SELECT * FROM users WHERE getemail = 'Yes' ORDER BY email ASC");
 
         if($result) {
-          while($row = mysql_fetch_array($result)) {
+          while($row = $result->fetch_array(MYSQLI_ASSOC)) {
             echo $row['email'] . "<br>\n";
           }
         }

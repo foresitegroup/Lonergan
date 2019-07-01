@@ -30,36 +30,32 @@ include("../inc/dbconfig.php");
 </head>
 <body>
 
-<? include("menu.php"); ?>
+<?php include("menu.php"); ?>
 
 <div style="clear: both; height: 15px;"></div>
   <div id="main-left-content" style="width: 900px; margin: 0 auto;">
     <div style="margin-left: 12px;">
     
       <?php
-        $id = $_GET['id'];
-        
-        $query = "SELECT * FROM news WHERE id = '$id'";
-        
-        $result = mysql_query($query);
-        $row = mysql_fetch_array($result)
+      $result = $mysqli->query("SELECT * FROM news WHERE id = '".$_GET['id']."'");
+      $row = $result->fetch_array(MYSQLI_ASSOC);
       ?>
   
       <form action="newsupdate.php" method="POST">
       <table style="width: 450px; float: left;">
         <tr>
-          <td colspan="2"><h3>Edit <?php echo $row['id'] ?></h3></td>
+          <td colspan="2"><h3>Edit <?php echo $row['id']; ?></h3></td>
         </tr>
         <tr>
           <td valign="top">Title:</td>
-          <td><input type="text" name="title" size="50" value="<?php echo $row['title'] ?>" /></td>
+          <td><input type="text" name="title" size="50" value="<?php echo $row['title']; ?>" /></td>
         </tr>
         <tr>
           <td valign="top">Text:</td>
-          <td><textarea rows="15" cols="37" name="text"><?php echo $row['text'] ?></textarea></td>
+          <td><textarea rows="15" cols="37" name="text"><?php echo $row['text']; ?></textarea></td>
         </tr>
         <tr>
-          <td colspan="2" align="center"><input type="hidden" name="id" value="<?php echo $id ?>" /><input type="submit" value="Update" /></td>
+          <td colspan="2" align="center"><input type="hidden" name="id" value="<?php echo $_GET['id']; ?>" /><input type="submit" value="Update" /></td>
         </tr>
       </table>
       </form>

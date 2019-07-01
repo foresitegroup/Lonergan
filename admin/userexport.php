@@ -1,8 +1,7 @@
 <?php
 include("../inc/dbconfig.php");
 
-$query = "SELECT firstname,lastname,institute,addr1,addr2,city,state,zip,country,getemail,regdate FROM users ORDER BY lastname ASC";
-$result = mysql_query($query);
+$result = $mysqli->query("SELECT firstname,lastname,institute,addr1,addr2,city,state,zip,country,getemail,regdate FROM users ORDER BY lastname ASC");
 
 // $fields = mysql_num_fields($result);
 // for ($i = 0; $i < $fields; $i++) {
@@ -10,7 +9,7 @@ $result = mysql_query($query);
 // }
 $csv_output .= "First Name\tLast Name\tInstitute\tAddress 1\tAddress 2\tCity\tState/Province\tZip/Postal Code\tCountry\tWants To Be Contacted?\tRegistration Date\t";
 
-while($row = mysql_fetch_row($result)) {
+while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 	$line = '';
 	foreach($row as $value) {
 		if ((!isset($value)) OR ($value == "")) {

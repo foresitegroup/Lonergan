@@ -41,7 +41,7 @@ include("../inc/dbconfig.php");
 </head>
 <body>
 
-<? include("menu.php"); ?>
+<?php include("menu.php"); ?>
 
 <div style="clear: both; height: 15px;"></div>
   <div id="main-left-content" style="width: 900px; margin: 0 auto;">
@@ -71,12 +71,10 @@ include("../inc/dbconfig.php");
       <div style="font-size: 80%;">
         <table>
         <?php
-        $query = "SELECT * FROM news ORDER BY id DESC";
-        
-        $result = mysql_query($query);
+        $result = $mysqli->query("SELECT * FROM news ORDER BY id DESC");
 
         if($result) {
-          while($row = mysql_fetch_array($result)) {
+          while($row = $result->fetch_array(MYSQLI_ASSOC)) {
             echo "<tr><td valign=\"top\" nowrap><a href=\"newsdelete.php?id=" . $row['id'] . "\">delete</a> | <a href=\"newsedit.php?id=" . $row['id'] . "\">edit</a> ::</td><td><a href=\"javascript:pop('newsview.php?id=" . $row['id'] . "')\">" . $row['title'] . "</a></td></tr>\n";
           }
         }

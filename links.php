@@ -1,4 +1,4 @@
-<?
+<?php
 $PageTitle = "Links";
 include("header.php");
 ?>
@@ -19,9 +19,9 @@ include("header.php");
           <?php
           include_once("inc/dbconfig.php");
           
-          $result = mysql_query("SELECT * FROM links ORDER BY sort+0 ASC");
+          $result = $mysqli->query("SELECT * FROM links ORDER BY sort+0 ASC");
           
-          while($row = mysql_fetch_array($result)) {
+          while($row = $result->fetch_array(MYSQLI_ASSOC)) {
             echo "<a href=\"" . $row['link'] . "\">" . $row['title'] . "</a><br>\n";
             
             if ($row['description'] != "") echo $row['description'] . "<br>\n";
@@ -35,8 +35,8 @@ include("header.php");
       </div> <!-- END main-left-content -->
     </div> <!-- END main-left -->
     
-    <? include("sidebar.php"); ?>
+    <?php include("sidebar.php"); ?>
     
   </div> <!-- END twocol-wrap -->
   
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

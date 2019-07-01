@@ -1,14 +1,9 @@
 <?php
 include("../inc/dbconfig.php");
 
-$title = mysql_real_escape_string($_POST['title']);
-$text = mysql_real_escape_string($_POST['text']);
+$mysqli->query("INSERT INTO news (title,text) VALUES('".$mysqli->real_escape_string($_POST['title'])."','".$mysqli->real_escape_string($_POST['text'])."')");
 
-$newrec = "INSERT INTO news (title,text) VALUES('$title','$text')";
+mysqli_close();
 
-mysql_query($newrec);
-
-mysql_close();
-
-header( "Location: newsindex.php" );
+header("Location: newsindex.php");
 ?>

@@ -1,4 +1,4 @@
-<?
+<?php
 include("login.php");
 $PageTitle = "Edit Profile";
 include("header.php");
@@ -7,8 +7,8 @@ include("inc/dbconfig.php");
 $id = $_GET['id'];
 
 $query = "SELECT * FROM users WHERE id = '$id'";
-$result = mysql_query($query);
-$row = mysql_fetch_array($result)
+$result = $mysqli->query($query);
+$row =$result->fetch_array(MYSQLI_ASSOC);
 ?>
   
   <div style="clear: both;"></div>
@@ -132,8 +132,8 @@ $row = mysql_fetch_array($result)
       </div> <!-- END main-left-content -->
     </div> <!-- END main-left -->
     
-    <? include("sidebar.php"); ?>
+    <?php include("sidebar.php"); ?>
     
   </div> <!-- END twocol-wrap -->
   
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

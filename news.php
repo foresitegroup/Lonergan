@@ -1,4 +1,4 @@
-<?
+<?php
 $PageTitle = "News & Events";
 include("header.php");
 include("inc/dbconfig.php");
@@ -15,14 +15,10 @@ include("inc/dbconfig.php");
         
         <div style="margin-left: 12px;">
           <?php
-          $id = $_GET['id'];
-          
-          $query = "SELECT * FROM news ORDER BY id DESC";
-          
-          $result = mysql_query($query);
+          $result = $mysqli->query("SELECT * FROM news ORDER BY id DESC");
           
           if($result) {
-            while($row = mysql_fetch_array($result)) {
+            while($row = $result->fetch_array(MYSQLI_ASSOC)) {
               echo "<strong>" . $row['title'] . "</strong><br>\n" . $row['text'] . "<br><br>\n";
             }
           }
@@ -31,8 +27,8 @@ include("inc/dbconfig.php");
       </div> <!-- END main-left-content -->
     </div> <!-- END main-left -->
     
-    <? include("sidebar.php"); ?>
+    <?php include("sidebar.php"); ?>
     
   </div> <!-- END twocol-wrap -->
   
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

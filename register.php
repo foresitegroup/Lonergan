@@ -1,4 +1,4 @@
-<?
+<?php
 $PageTitle = "Register";
 include("header.php");
 
@@ -110,8 +110,8 @@ $salt = "BernardLonerganArchive";
       </div> <!-- END main-left-content -->
     </div> <!-- END main-left -->
     
-    <? include("sidebar.php"); ?>
+    <?php include("sidebar.php"); ?>
     
   </div> <!-- END twocol-wrap -->
   
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

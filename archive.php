@@ -1,4 +1,4 @@
-<?
+<?php
 include("login.php");
 $PageTitle = "Archive";
 include("header.php");
@@ -50,46 +50,44 @@ include("inc/dbconfig.php");
       <?php
       $iswhere = "no";
       $wherestatement = "";
-      if ($_POST["author"]=="") {
+
+      if (!isset($_POST["author"]) || $_POST["author"] == "") {
         $selauthor = "Filter Author";
       } else {
         $selauthor = $_POST["author"];
         $iswhere = "yes";
         $wherestatement .= "author = '$selauthor'";
       }
-      if ($_POST["language"]=="") {
+
+      if (!isset($_POST["language"]) || $_POST["language"] == "") {
         $sellanguage = "Filter Language";
       } else {
         $sellanguage = $_POST["language"];
         $iswhere = "yes";
-        if ($wherestatement !== "") {
-          $wherestatement .= " AND ";
-        }
+        if ($wherestatement != "") $wherestatement .= " AND ";
         $wherestatement .= "(language1 = '$sellanguage' OR language2 = '$sellanguage')";
       }
-      if ($_POST["decade"]=="") {
+
+      if (!isset($_POST["decade"]) || $_POST["decade"] == "") {
         $seldecade = "Filter Decade";
       } else {
         $seldecade = $_POST["decade"];
         $iswhere = "yes";
-        if ($wherestatement !== "") {
-          $wherestatement .= " AND ";
-        }
+        if ($wherestatement != "") $wherestatement .= " AND ";
         $wherestatement .= "decade = '$seldecade'";
       }
-      if ($_POST["type"]=="") {
+
+      if (!isset($_POST["type"]) || $_POST["type"] == "") {
         $seltype = "Filter Type";
       } else {
         $seltype = $_POST["type"];
         $iswhere = "yes";
-        if ($wherestatement !== "") {
-          $wherestatement .= " AND ";
-        }
+        if ($wherestatement != "") $wherestatement .= " AND ";
         $wherestatement .= "$seltype != ''";
       }
       
       if ($iswhere == "yes") {
-        $where = "WHERE display = \"\" AND $wherestatement";
+        $where = "WHERE display = '' AND $wherestatement";
       } else {
         $where = "";
       }
@@ -100,68 +98,56 @@ include("inc/dbconfig.php");
       </form>
       
       <form name="frmFilter" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" style="text-align: right;">
-        <select name="author" onchange="document.frmFilter.submit()">
-        <option value="">Filter Author</option>
-        <?php
-        $authorquery = "SELECT DISTINCT author FROM archive ORDER BY author ASC";
-        
-        $authorresult = mysql_query($authorquery);
-          
-        while($row = mysql_fetch_array($authorresult)) {
-          if ($row[0]!=="") {
-            echo "<option value=\"$row[0]\"";
-            if ($row[0]==$selauthor) {
-              echo " selected";
+        <select name="author" onchange="document.frmFilter.submit()" style="max-width: 150px;">
+          <option value="">Filter Author</option>
+          <?php
+          $authorresult = $mysqli->query("SELECT DISTINCT author FROM archive ORDER BY author ASC");
+            
+          while($row = $authorresult->fetch_array(MYSQLI_ASSOC)) {
+            if ($row['author'] != "") {
+              echo '<option value="'.$row['author'].'"';
+              if ($row['author'] == $selauthor) echo " selected";
+              echo ">".$row['author']."</option>\n";
             }
-            echo ">$row[0]</option>\n";
           }
-        }
-        ?>
+          ?>
+        </select>
+
+        <select name="language" onchange="document.frmFilter.submit()" style="max-width: 150px;">
+          <option value="">Filter Language</option>
+          <?php
+          $languageresult = $mysqli->query("SELECT DISTINCT language1 FROM archive ORDER BY language1 ASC");
+            
+          while($row = $languageresult->fetch_array(MYSQLI_ASSOC)) {
+            if ($row['language1'] != "") {
+              echo '<option value="'.$row['language1'].'"';
+              if ($row['language1'] == $sellanguage) echo " selected";
+              echo ">".$row['language1']."</option>\n";
+            }
+          }
+          ?>
         </select>
         
-        <select name="language" onchange="document.frmFilter.submit()">
-        <option value="">Filter Language</option>
-        <?php
-        $languagequery = "SELECT DISTINCT language1 FROM archive ORDER BY language1 ASC";
-        
-        $languageresult = mysql_query($languagequery);
-          
-        while($row = mysql_fetch_array($languageresult)) {
-          if ($row[0]!=="") {
-            echo "<option value=\"$row[0]\"";
-            if ($row[0]==$sellanguage) {
-              echo " selected";
+        <select name="decade" onchange="document.frmFilter.submit()" style="max-width: 100px;">
+          <option value="">Filter Decade</option>
+          <?php
+          $decaderesult = $mysqli->query("SELECT DISTINCT decade FROM archive ORDER BY decade ASC");
+            
+          while($row = $decaderesult->fetch_array(MYSQLI_ASSOC)) {
+            if ($row['decade'] != "") {
+              echo '<option value="'.$row['decade'].'"';
+              if ($row['decade'] == $seldecade) echo " selected";
+              echo ">".$row['decade']."</option>\n";
             }
-            echo ">$row[0]</option>\n";
           }
-        }
-        ?>
-        </select>
-        
-        <select name="decade" onchange="document.frmFilter.submit()">
-        <option value="">Filter Decade</option>
-        <?php
-        $decadequery = "SELECT DISTINCT decade FROM archive ORDER BY decade ASC";
-        
-        $decaderesult = mysql_query($decadequery);
-          
-        while($row = mysql_fetch_array($decaderesult)) {
-          if ($row[0]!=="") {
-            echo "<option value=\"$row[0]\"";
-            if ($row[0]==$seldecade) {
-              echo " selected";
-            }
-            echo ">$row[0]</option>\n";
-          }
-        }
-        ?>
+          ?>
         </select>
         
         <select name="type" onchange="document.frmFilter.submit()">
-        <option value="">Filter Type</option>
-        <option value="pdf" <?php if ($seltype=="pdf") { echo "selected"; } ?>>PDF</option>
-        <option value="audio" <?php if ($seltype=="audio") { echo "selected"; } ?>>Audio</option>
-        <option value="video" <?php if ($seltype=="video") { echo "selected"; } ?>>Video</option>
+          <option value="">Filter Type</option>
+          <option value="pdf" <?php if ($seltype=="pdf") { echo "selected"; } ?>>PDF</option>
+          <option value="audio" <?php if ($seltype=="audio") { echo "selected"; } ?>>Audio</option>
+          <option value="video" <?php if ($seltype=="video") { echo "selected"; } ?>>Video</option>
         </select>
       </form>
       <br>
@@ -194,16 +180,16 @@ include("inc/dbconfig.php");
         
         // If filtering show all results else break it up in multiple pages
         if ($iswhere == "no") {
-          $query = "SELECT * FROM archive WHERE display = \"\" ORDER BY sku ASC LIMIT $offset, $rowsPerPage";
+          $query = "SELECT * FROM archive WHERE display = '' ORDER BY sku ASC LIMIT $offset, $rowsPerPage";
         } else {
           $query = "SELECT * FROM archive $where ORDER BY sku ASC";
         }
         //$query = "SELECT * FROM archive $where ORDER BY sku ASC";
         
-        $result = mysql_query($query);
+        $result = $mysqli->query($query);
         
         if($result) {
-          while($row = mysql_fetch_array($result)) {
+          while($row = $result->fetch_array(MYSQLI_ASSOC)) {
             if (!empty($row['archivalnum'])) {
               $thenumber = $row['sku'] . " / " . $row['archivalnum'];
             } else {
@@ -245,8 +231,8 @@ include("inc/dbconfig.php");
         if ($iswhere == "no") {
           
           // how many rows we have in database
-          $result = mysql_query("SELECT * FROM archive");
-          $numrows = mysql_num_rows($result);
+          $result = $mysqli->query("SELECT * FROM archive");
+          $numrows = $result->num_rows;
 
           // how many pages we have when using paging?
           $maxPage = ceil($numrows/$rowsPerPage);
@@ -294,4 +280,4 @@ include("inc/dbconfig.php");
     </div>
   </div> <!-- END main-left-content -->
   
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

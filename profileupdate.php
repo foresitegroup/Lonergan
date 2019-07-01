@@ -2,27 +2,27 @@
 include("inc/dbconfig.php");
 
 // Set varibles to be inserted in DB
-$firstname = mysql_real_escape_string($_POST['firstname']);
-$lastname = mysql_real_escape_string($_POST['lastname']);
-$institute = mysql_real_escape_string($_POST['institute']);
-$addr1 = mysql_real_escape_string($_POST['addr1']);
-$addr2 = mysql_real_escape_string($_POST['addr2']);
-$city = mysql_real_escape_string($_POST['city']);
-$state = mysql_real_escape_string($_POST['state']);
-$zip = mysql_real_escape_string($_POST['zip']);
-$country = mysql_real_escape_string($_POST['country']);
-$phone = mysql_real_escape_string($_POST['phone']);
-$email = mysql_real_escape_string($_POST['email']);
+$firstname = $mysqli->real_escape_string($_POST['firstname']);
+$lastname = $mysqli->real_escape_string($_POST['lastname']);
+$institute = $mysqli->real_escape_string($_POST['institute']);
+$addr1 = $mysqli->real_escape_string($_POST['addr1']);
+$addr2 = $mysqli->real_escape_string($_POST['addr2']);
+$city = $mysqli->real_escape_string($_POST['city']);
+$state = $mysqli->real_escape_string($_POST['state']);
+$zip = $mysqli->real_escape_string($_POST['zip']);
+$country = $mysqli->real_escape_string($_POST['country']);
+$phone = $mysqli->real_escape_string($_POST['phone']);
+$email = $mysqli->real_escape_string($_POST['email']);
 if (!empty($_POST['getemail'])) {
   $getemail = "Yes";
 } else {
   $getemail = "No";
 }
-$password = mysql_real_escape_string($_POST['newpassword1']);
+$password = $mysqli->real_escape_string($_POST['newpassword1']);
 $id = $_POST['id'];
 
-$find_username = mysql_query("SELECT * FROM users WHERE id != '$id' AND email = '$email'");
-$duplicate_username = mysql_num_rows($find_username);
+$find_username = $mysqli->query("SELECT * FROM users WHERE id != '$id' AND email = '$email'");
+$duplicate_username = $find_username->num_rows;
 
 if ($duplicate_username == 0 ) {
   if ((!empty($_POST['newpassword1'])) && (!empty($_POST['newpassword2']))) {
@@ -33,20 +33,20 @@ if ($duplicate_username == 0 ) {
   }
   $PageTitle = "Profile Updated";
   $FinalText = "Your profile has been successfully updated.";
-  header( "Location: profileedit.php?id=$id" );
+  header("Location: profileedit.php?id=$id");
 } else {
   $PageTitle = "Duplicate Entry";
   $FinalText = "The e-mail address submitted already exists in our database.  Please go back and submit a different address.";
 } 
 
-mysql_query($query);
-mysql_close();
+$mysqli->query($query);
+mysqli_close();
 
 // Print results
 //echo "<pre>$SendTo\n$from$subject\n\n$message</pre>";
 ?>
 
-<?
+<?php
 include("header.php");
 ?>
 
@@ -66,8 +66,8 @@ include("header.php");
         </div> <!-- END main-left-content -->
       </div> <!-- END main-left -->
       
-      <? include("sidebar.php"); ?>
+      <?php include("sidebar.php"); ?>
       
     </div> <!-- END twocol-wrap -->
   
-<? include("footer.php"); ?>
+<?php include("footer.php"); ?>

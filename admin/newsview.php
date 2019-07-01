@@ -20,12 +20,8 @@ include("../inc/dbconfig.php");
     <div style="margin-left: 12px;">
   
       <?php
-      $id = $_GET['id'];
-      
-      $query = "SELECT * FROM news WHERE id = '$id'";
-      
-      $result = mysql_query($query);
-      $row = mysql_fetch_array($result);
+      $result = $mysqli->query("SELECT * FROM news WHERE id = '".$_GET['id']."'");
+      $row = $result->fetch_array(MYSQLI_ASSOC);
       
       echo "<strong>" . $row['title'] . "</strong><br>\n" . $row['text'] . "<br><br>\n";
       ?>

@@ -1,13 +1,9 @@
 <?php
 include("../inc/dbconfig.php");
 
-$id = $_GET['id'];
+$mysqli->query("DELETE FROM users WHERE id = '".$_GET['id']."'");
 
-$query = "DELETE FROM users WHERE id = '$id'";
+mysqli_close();
 
-mysql_query($query);
-
-mysql_close();
-
-header( "Location: userindex.php" );
+header("Location: userindex.php");
 ?>
