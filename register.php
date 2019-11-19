@@ -6,6 +6,8 @@ include("header.php");
 $ip = $_SERVER['REMOTE_ADDR'];
 $timestamp = time();
 $salt = "BernardLonerganArchive";
+
+include_once "inc/dbconfig.php";
 ?>
   
   <div style="clear: both;"></div>
@@ -99,6 +101,9 @@ $salt = "BernardLonerganArchive";
                   <input type="hidden" name="ip" value="<?php echo $ip; ?>">
                   <input type="hidden" name="timestamp" value="<?php echo $timestamp; ?>">
 
+                  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                  <div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY; ?>"></div>
+
                   <br><input type="submit" value="Submit"><br><br>
                 </td>
               </tr>
@@ -113,5 +118,14 @@ $salt = "BernardLonerganArchive";
     <?php include("sidebar.php"); ?>
     
   </div> <!-- END twocol-wrap -->
+
+<!-- <script src="https://www.google.com/recaptcha/api.js?render=<?php echo RECAPTCHA_SITE_KEY; ?>"></script>
+<script>
+  grecaptcha.ready(function() {
+    grecaptcha.execute('<?php echo RECAPTCHA_SITE_KEY; ?>', {action: 'register_form'}).then(function(token) {
+      document.getElementById('g-recaptcha-response').value=token;
+    });
+  });
+</script> -->
   
 <?php include("footer.php"); ?>
