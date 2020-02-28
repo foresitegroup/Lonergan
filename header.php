@@ -22,6 +22,15 @@
     ga('send', 'pageview');
   </script>
   <!-- END Google Analytics -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics (Greg) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159342335-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-159342335-1');
+  </script>
 </head>
 <body>
 
