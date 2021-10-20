@@ -1,9 +1,12 @@
 <?php
-$SendTo = "bdoranca@yahoo.ca"; // CHANGE THIS!
+$SendTo = "lonerganarchive@gmail.com"; // CHANGE THIS!
 $subject = "Message Via The Bernard Lonergan Archive";
-$from = "From: " . $_POST['email'] . "\r\n";
+$from = "From: Contact Form <donotreply@bernardlonergan.com>\r\n";
+$from .= "Reply-To: " . $_POST['email'] . "\r\n";
+$from .= "Bcc: foresitegroupllc@gmail.com\r\n";
 
-$message = $_POST['comments'] . "\n";
+$message = $_POST['comments'] . "\n\n";
+$message .= $_POST['email'] . "\n";
 
 // Print results
 //echo "<pre>$SendTo\n$from$subject\n\n$message</pre>";
